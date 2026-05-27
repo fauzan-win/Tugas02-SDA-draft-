@@ -1,18 +1,6 @@
-/*
- * ============================================================
- *  basic_sort.c  –  Sorting Dasar
- *  Algoritma : Bubble Sort, Insertion Sort, Selection Sort
- *  Dataset   : 1000 integer random (di-generate otomatis)
- * ============================================================
- */
-
 #include "functions.h"
 
-/* ----------------------------------------------------------------
- *  UTILITY INTEGER
- * ---------------------------------------------------------------- */
-
-/* Cetak n elemen pertama dari array integer */
+//Cetak n elemen pertama dari array integer
 void cetakArrayInt(int arr[], int n, int total) {
     printf("  [ ");
     for (int i = 0; i < n && i < total; i++) {
@@ -23,7 +11,7 @@ void cetakArrayInt(int arr[], int n, int total) {
     printf(" ]\n");
 }
 
-/* Shuffle array integer dengan metode Fisher-Yates (rand + swap) */
+// Shuffle array integer dengan metode Fisher-Yates (rand + swap)
 void shuffleInt(int arr[], int n) {
     for (int i = n - 1; i > 0; i--) {
         int j = rand() % (i + 1);
@@ -33,21 +21,13 @@ void shuffleInt(int arr[], int n) {
     }
 }
 
-/* Salin array integer dari src ke dst */
+// Salin array integer dari src ke dst
 void salinInt(int src[], int dst[], int n) {
     for (int i = 0; i < n; i++) dst[i] = src[i];
 }
 
-/* ----------------------------------------------------------------
- *  ALGORITMA SORTING DASAR
- * ---------------------------------------------------------------- */
 
-/*
- * Bubble Sort
- * Cara kerja : Bandingkan dua elemen berdekatan, tukar jika terbalik.
- *              Ulangi sampai tidak ada pertukaran (array terurut).
- * Kompleksitas: O(n²) worst/average, O(n) best (sudah terurut)
- */
+//Bubble Sort
 void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int tukar = 0;
@@ -60,16 +40,12 @@ void bubbleSort(int arr[], int n) {
                 tukar = 1;
             }
         }
-        if (!tukar) break; /* optimasi: berhenti jika sudah terurut */
+        if (!tukar) break; 
     }
 }
 
-/*
- * Insertion Sort
- * Cara kerja : Ambil satu elemen (kunci), geser elemen yang lebih besar
- *              ke kanan, lalu sisipkan kunci ke posisi yang tepat.
- * Kompleksitas: O(n²) worst/average, O(n) best
- */
+//Insertion Sort
+
 void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
         int kunci = arr[i];
@@ -82,12 +58,7 @@ void insertionSort(int arr[], int n) {
     }
 }
 
-/*
- * Selection Sort
- * Cara kerja : Cari nilai minimum dari sisa array yang belum terurut,
- *              tukar ke posisi paling kiri yang belum terurut.
- * Kompleksitas: O(n²) semua kasus, jumlah swap paling sedikit
- */
+//Selection Sort
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int idxMin = i;
@@ -102,31 +73,30 @@ void selectionSort(int arr[], int n) {
     }
 }
 
-/* ----------------------------------------------------------------
- *  RUNNER – Generate data, shuffle, sort, tampilkan hasil & waktu
- * ---------------------------------------------------------------- */
+
+//Generate data, shuffle, sort, tampilkan hasil & waktu
+
 void jalankanSortingDasar(int pilihan) {
     const char *nama[] = { "", "Bubble Sort", "Insertion Sort", "Selection Sort" };
 
-    /* 1. Generate 1000 data random */
+    //1. Generate 1000 data random 
     int dataAsli[JUMLAH_DATA_INT];
     srand((unsigned)time(NULL));
     for (int i = 0; i < JUMLAH_DATA_INT; i++)
-        dataAsli[i] = rand() % 10000 + 1;  /* rentang 1 – 10000 */
+        dataAsli[i] = rand() % 10000 + 1;
 
-    /* 2. Shuffle sebelum sorting */
+    //2. Shuffle sebelum sorting
     shuffleInt(dataAsli, JUMLAH_DATA_INT);
 
-    /* 3. Salin ke array kerja (agar data asli tidak berubah) */
+    //3. Salin ke array kerja (agar data asli tidak berubah)
     int data[JUMLAH_DATA_INT];
     salinInt(dataAsli, data, JUMLAH_DATA_INT);
 
     printf("\n===== %s =====\n", nama[pilihan]);
-    printf("Data SEBELUM sorting (%d data pertama dari %d):\n",
-           TAMPIL, JUMLAH_DATA_INT);
+    printf("Data SEBELUM sorting (%d data pertama dari %d):\n", TAMPIL, JUMLAH_DATA_INT);
     cetakArrayInt(data, TAMPIL, JUMLAH_DATA_INT);
 
-    /* 4. Ukur waktu eksekusi dengan clock() */
+    //4. Ukur waktu eksekusi dengan clock()
     clock_t mulai = clock();
 
     switch (pilihan) {
@@ -138,9 +108,8 @@ void jalankanSortingDasar(int pilihan) {
     clock_t selesai = clock();
     double waktu = (double)(selesai - mulai) / CLOCKS_PER_SEC;
 
-    /* 5. Tampilkan hasil */
-    printf("Data SETELAH sorting (%d data pertama dari %d):\n",
-           TAMPIL, JUMLAH_DATA_INT);
+    // 5. Tampilkan hasil
+    printf("Data SETELAH sorting (%d data pertama dari %d):\n", TAMPIL, JUMLAH_DATA_INT);
     cetakArrayInt(data, TAMPIL, JUMLAH_DATA_INT);
     printf("Waktu eksekusi : %.6f detik\n\n", waktu);
 }

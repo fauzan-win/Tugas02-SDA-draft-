@@ -1,16 +1,5 @@
-/*
- * ============================================================
- *  main.c  –  Menu Utama Program Sorting
- *  Menghubungkan basic_sort.c dan advance_sort.c
- *  melalui deklarasi di functions.h
- * ============================================================
- */
-
 #include "functions.h"
 
-/* ----------------------------------------------------------------
- *  SUBMENU: Sorting Dasar
- * ---------------------------------------------------------------- */
 void menuSortingDasar(void) {
     int pilih;
     do {
@@ -30,9 +19,7 @@ void menuSortingDasar(void) {
     } while (pilih != 4);
 }
 
-/* ----------------------------------------------------------------
- *  SUBMENU: Advance Sorting
- * ---------------------------------------------------------------- */
+
 void menuAdvanceSorting(void) {
     int pilih;
     do {
@@ -52,9 +39,8 @@ void menuAdvanceSorting(void) {
     } while (pilih != 4);
 }
 
-/* ----------------------------------------------------------------
- *  MENU UTAMA
- * ---------------------------------------------------------------- */
+
+//MENU UTAMA
 int main(void) {
     int pilih;
     do {
