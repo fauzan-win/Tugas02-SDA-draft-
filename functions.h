@@ -29,9 +29,9 @@ void shuffleStr(char arr[][MAX_PANJANG_KATA], int n);
 
 // Membaca kata dari words.txt
 int bacaFile(char arr[][MAX_PANJANG_KATA], int maks);
-
 void merge(char arr[][MAX_PANJANG_KATA], int kiri, int tengah, int kanan);
 void mergeSort(char arr[][MAX_PANJANG_KATA], int kiri, int kanan);
+
 int  partisi(char arr[][MAX_PANJANG_KATA], int rendah, int tinggi);
 void quickSort(char arr[][MAX_PANJANG_KATA], int rendah, int tinggi);
 void shellSort(char arr[][MAX_PANJANG_KATA], int n);
