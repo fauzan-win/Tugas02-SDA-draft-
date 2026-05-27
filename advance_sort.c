@@ -22,7 +22,6 @@ void shuffleStr(char arr[][MAX_PANJANG_KATA], int n) {
     }
 }
 
-
 /* Membaca kata dari file .txt, satu kata per baris / per token */
 int bacaFile(char arr[][MAX_PANJANG_KATA], int maks) {
     FILE *fp = fopen("words.txt", "r");
